@@ -25,5 +25,21 @@ namespace Lotto
         public int Number5 { get => number5; set => number5 = value; }
         public int Number6 { get => number6; set => number6 = value; }
         public int Bonus { get => bonus; set => bonus = value; }
+
+        public LottoResult(int turn, int number1, int number2, int number3, int number4, int number5, int number6, int bonus)
+        {
+            this.turn = turn;
+            this.number1 = number1;
+            this.number2 = number2;
+            this.number3 = number3;
+            this.number4 = number4;
+            this.number5 = number5;
+            this.number6 = number6;
+            this.bonus = bonus;
+        }
+
+        public LottoResult()
+        {
+        }
     }
 }

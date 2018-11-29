@@ -44,10 +44,10 @@
             // lottoView
             // 
             this.lottoView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.lottoView.Location = new System.Drawing.Point(12, 38);
+            this.lottoView.Location = new System.Drawing.Point(12, 249);
             this.lottoView.Name = "lottoView";
             this.lottoView.RowTemplate.Height = 23;
-            this.lottoView.Size = new System.Drawing.Size(536, 237);
+            this.lottoView.Size = new System.Drawing.Size(860, 350);
             this.lottoView.TabIndex = 0;
             // 
             // menuStrip1
@@ -57,7 +57,7 @@
             this.통계ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(581, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1184, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -73,13 +73,13 @@
             // 메인홈으로ToolStripMenuItem
             // 
             this.메인홈으로ToolStripMenuItem.Name = "메인홈으로ToolStripMenuItem";
-            this.메인홈으로ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.메인홈으로ToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.메인홈으로ToolStripMenuItem.Text = "메인홈으로";
             // 
             // 종료ToolStripMenuItem
             // 
             this.종료ToolStripMenuItem.Name = "종료ToolStripMenuItem";
-            this.종료ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.종료ToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.종료ToolStripMenuItem.Text = "종료";
             // 
             // 통계ToolStripMenuItem
@@ -114,7 +114,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(581, 391);
+            this.ClientSize = new System.Drawing.Size(1184, 611);
             this.Controls.Add(this.lottoView);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;

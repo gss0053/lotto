@@ -103,6 +103,7 @@
             this.홀짝통계ToolStripMenuItem.Name = "홀짝통계ToolStripMenuItem";
             this.홀짝통계ToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.홀짝통계ToolStripMenuItem.Text = "홀짝 통계";
+            this.홀짝통계ToolStripMenuItem.Click += new System.EventHandler(this.홀짝통계ToolStripMenuItem_Click);
             // 
             // 구간별출현횟수통계ToolStripMenuItem
             // 

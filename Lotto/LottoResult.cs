@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lotto
 {
-    class LottoResult
+    public class LottoResult
     {
         private int turn;
         private int number1;

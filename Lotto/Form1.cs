@@ -27,6 +27,13 @@ namespace Lotto
         List<int> numberList;
         FrmProgressBar fpb;
 
+
+        private void 홀짝통계ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmSnifflingChart fsc = new FrmSnifflingChart(lottoList);
+            fsc.Show();
+        }
+
         public Form1()
         {
             InitializeComponent();
@@ -171,7 +178,6 @@ namespace Lotto
             {
                 MessageBox.Show("업데이트 필요없음");
             }
-
         }
     }
 }

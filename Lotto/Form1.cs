@@ -24,8 +24,14 @@ namespace Lotto
         int count = 0;
         List<LottoResult> lottoList;
         private double completeCnt;
-        List<int> numberList;
+        List<int> numberList;   // 파싱 할때 1 ~ 6 번 구
         FrmProgressBar fpb;
+
+        private void 번호별통계ToolStripMenuItem_Click(object sender, EventArgs e)
+        {   
+            Frm_ByNumberChart fbnc = new Frm_ByNumberChart(lottoList);
+            fbnc.Show();
+        }
 
         public Form1()
         {

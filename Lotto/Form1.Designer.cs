@@ -73,13 +73,13 @@
             // 메인홈으로ToolStripMenuItem
             // 
             this.메인홈으로ToolStripMenuItem.Name = "메인홈으로ToolStripMenuItem";
-            this.메인홈으로ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.메인홈으로ToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.메인홈으로ToolStripMenuItem.Text = "메인홈으로";
             // 
             // 종료ToolStripMenuItem
             // 
             this.종료ToolStripMenuItem.Name = "종료ToolStripMenuItem";
-            this.종료ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.종료ToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.종료ToolStripMenuItem.Text = "종료";
             // 
             // 통계ToolStripMenuItem
@@ -97,6 +97,7 @@
             this.번호별통계ToolStripMenuItem.Name = "번호별통계ToolStripMenuItem";
             this.번호별통계ToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.번호별통계ToolStripMenuItem.Text = "번호별 통계";
+            this.번호별통계ToolStripMenuItem.Click += new System.EventHandler(this.번호별통계ToolStripMenuItem_Click);
             // 
             // 홀짝통계ToolStripMenuItem
             // 

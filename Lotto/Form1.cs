@@ -58,7 +58,7 @@ namespace Lotto
                 return newestRound;
             }
         }
-        private LottoResult Parsing(string path)
+        private int Parsing(string path)
         {
             HtmlWeb web = new HtmlWeb();
             HtmlAgilityPack.HtmlDocument htmlDoc = web.Load(path);
@@ -103,11 +103,8 @@ namespace Lotto
             number5 = numberList[4];
             number6 = numberList[5];
             bonus = int.Parse(span.SelectSingleNode("img").GetAttributeValue("alt", ""));
-
-            LottoResult lotto = new LottoResult() { Turn = round, Number1 = number1, Number2 = number2, Number3 = number3, Number4 = number4, Number5 = number5, Number6 = number6, Bonus = bonus };
-            lottoList.Add(lotto);
-
-            return lotto;
+            
+            return round;
         }
 
         private void Insert()
@@ -126,13 +123,8 @@ namespace Lotto
                 cmd.Parameters.AddWithValue("number_6", number6);
                 cmd.Parameters.AddWithValue("number_7", bonus);
 
-                int result = cmd.ExecuteNonQuery();
+                cmd.ExecuteNonQuery();
                 DBConnect.Close(con);
-
-                if (result == 1)
-                {
-                    // MessageBox.Show("데이터 추가 성공", "성공메세지", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
             }
         }
 
@@ -154,18 +146,18 @@ namespace Lotto
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            count = Parsing(path).Turn - DBNewestRound();
-            if (Parsing(path).Turn > DBNewestRound() || DBNewestRound() == 0)
+            count = Parsing(path) - DBNewestRound();
+            if (Parsing(path) > DBNewestRound())
             {
                 fpb = new FrmProgressBar();
                 fpb.Show();
-                while (Parsing(path).Turn > DBNewestRound())
+                while (Parsing(path) > DBNewestRound())
                 {
                     no = DBNewestRound() + 1;
                     path = path + no;
                     Parsing(path);
                     Insert();
-
+                    
                     path = path.Substring(0, path.Length - no.ToString().Length);
                     no++;
                 }
@@ -175,9 +167,35 @@ namespace Lotto
             }
             else
             {
-                MessageBox.Show("업데이트 필요없음");
+                MessageBox.Show("최신 버전입니다");
             }
 
+            SqlConnection con = new SqlConnection("Data Source=192.168.0.10;Initial Catalog=lotto_DB;User ID=khi;Password=1234");
+            con.Open();
+            SqlCommand comm = new SqlCommand();
+            comm.Connection = con;
+            comm.CommandType = CommandType.StoredProcedure;
+            comm.CommandText = "Select";
+
+            SqlDataReader sr = comm.ExecuteReader();
+
+            while (sr.Read())
+            {
+                lottoList.Add(new LottoResult(int.Parse(sr[0].ToString()), int.Parse(sr[1].ToString()), int.Parse(sr[2].ToString()), int.Parse(sr[3].ToString()), int.Parse(sr[4].ToString()), int.Parse(sr[5].ToString()), int.Parse(sr[6].ToString()), int.Parse(sr[7].ToString())));
+            }
+
+            con.Close();
+
+            lottoView.DataSource = lottoList;
+
+            lottoView.Columns[0].HeaderText = "회차수";
+            lottoView.Columns[1].HeaderText = "1번 번호";
+            lottoView.Columns[2].HeaderText = "2번 번호";
+            lottoView.Columns[3].HeaderText = "3번 번호";
+            lottoView.Columns[4].HeaderText = "4번 번호";
+            lottoView.Columns[5].HeaderText = "5번 번호";
+            lottoView.Columns[6].HeaderText = "6번 번호";
+            lottoView.Columns[7].HeaderText = "보너스 번호";
         }
     }
 }

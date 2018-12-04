@@ -18,7 +18,8 @@ namespace Lotto
     public partial class Form1 : Form
     {
         private int round, number1, number2, number3, number4, number5, number6, bonus = 0;
-        private string path = @"http://www.nlotto.co.kr/gameResult.do?method=byWin&drwNo=";
+        private string path = @"https://www.nlotto.co.kr/gameResult.do?method=byWin&drwNo=";
+        //private string path = @"http://www.dhlottery.co.kr/gameResult.do?method=byWin&drwNo=";
         private int no = 0;
         private int newestRound = 0;
         int count = 0;

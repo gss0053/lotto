@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.ByNumberChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.cbo_Start_Number = new System.Windows.Forms.ComboBox();
             this.cbo_End_Number = new System.Windows.Forms.ComboBox();
@@ -40,27 +41,29 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.myTooltip = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ByNumberChart)).BeginInit();
             this.SuspendLayout();
             // 
             // ByNumberChart
             // 
-            chartArea1.Name = "ChartArea1";
-            this.ByNumberChart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.ByNumberChart.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.ByNumberChart.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.ByNumberChart.Legends.Add(legend2);
             this.ByNumberChart.Location = new System.Drawing.Point(12, 89);
             this.ByNumberChart.Name = "ByNumberChart";
             this.ByNumberChart.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
-            series1.Legend = "Legend1";
-            series1.MarkerSize = 1;
-            series1.Name = "Series1";
-            this.ByNumberChart.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
+            series2.Legend = "Legend1";
+            series2.MarkerSize = 1;
+            series2.Name = "Series1";
+            this.ByNumberChart.Series.Add(series2);
             this.ByNumberChart.Size = new System.Drawing.Size(763, 571);
             this.ByNumberChart.TabIndex = 0;
             this.ByNumberChart.Text = "chart1";
+            this.ByNumberChart.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ByNumberChart_MouseMove);
             // 
             // cbo_Start_Number
             // 
@@ -69,6 +72,7 @@
             this.cbo_Start_Number.Name = "cbo_Start_Number";
             this.cbo_Start_Number.Size = new System.Drawing.Size(121, 20);
             this.cbo_Start_Number.TabIndex = 1;
+            this.cbo_Start_Number.KeyUp += new System.Windows.Forms.KeyEventHandler(this.cbo_Start_Number_KeyUp);
             // 
             // cbo_End_Number
             // 
@@ -77,6 +81,7 @@
             this.cbo_End_Number.Name = "cbo_End_Number";
             this.cbo_End_Number.Size = new System.Drawing.Size(121, 20);
             this.cbo_End_Number.TabIndex = 2;
+            this.cbo_End_Number.KeyUp += new System.Windows.Forms.KeyEventHandler(this.cbo_End_Number_KeyUp);
             // 
             // btn_sub
             // 
@@ -167,5 +172,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ToolTip myTooltip;
     }
 }

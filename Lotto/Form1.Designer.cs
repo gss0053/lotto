@@ -31,15 +31,14 @@
             this.lottoView = new System.Windows.Forms.DataGridView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.메인ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.메인홈으로ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.종료ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.통계ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.번호별통계ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.홀짝통계ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.구간별출현횟수통계ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.기간별미출현ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.연속번호출현통계ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cbGames = new System.Windows.Forms.ComboBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lbl_LuckNum = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -51,18 +50,17 @@
             this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.lottoView)).BeginInit();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // lottoView
             // 
             this.lottoView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.lottoView.Location = new System.Drawing.Point(12, 249);
+            this.lottoView.Location = new System.Drawing.Point(12, 238);
             this.lottoView.MultiSelect = false;
             this.lottoView.Name = "lottoView";
             this.lottoView.RowTemplate.Height = 23;
             this.lottoView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.lottoView.Size = new System.Drawing.Size(860, 350);
+            this.lottoView.Size = new System.Drawing.Size(1160, 361);
             this.lottoView.TabIndex = 0;
             // 
             // menuStrip1
@@ -79,23 +77,17 @@
             // 메인ToolStripMenuItem
             // 
             this.메인ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.메인홈으로ToolStripMenuItem,
             this.종료ToolStripMenuItem});
             this.메인ToolStripMenuItem.Name = "메인ToolStripMenuItem";
             this.메인ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
             this.메인ToolStripMenuItem.Text = "메인";
             // 
-            // 메인홈으로ToolStripMenuItem
-            // 
-            this.메인홈으로ToolStripMenuItem.Name = "메인홈으로ToolStripMenuItem";
-            this.메인홈으로ToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
-            this.메인홈으로ToolStripMenuItem.Text = "메인홈으로";
-            // 
             // 종료ToolStripMenuItem
             // 
             this.종료ToolStripMenuItem.Name = "종료ToolStripMenuItem";
-            this.종료ToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.종료ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.종료ToolStripMenuItem.Text = "종료";
+            this.종료ToolStripMenuItem.Click += new System.EventHandler(this.종료ToolStripMenuItem_Click);
             // 
             // 통계ToolStripMenuItem
             // 
@@ -103,7 +95,8 @@
             this.번호별통계ToolStripMenuItem,
             this.홀짝통계ToolStripMenuItem,
             this.구간별출현횟수통계ToolStripMenuItem,
-            this.기간별미출현ToolStripMenuItem});
+            this.기간별미출현ToolStripMenuItem,
+            this.연속번호출현통계ToolStripMenuItem});
             this.통계ToolStripMenuItem.Name = "통계ToolStripMenuItem";
             this.통계ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
             this.통계ToolStripMenuItem.Text = "통계";
@@ -136,24 +129,22 @@
             this.기간별미출현ToolStripMenuItem.Text = "기간별 미출현번호 통계";
             this.기간별미출현ToolStripMenuItem.Click += new System.EventHandler(this.기간별미출현ToolStripMenuItem_Click);
             // 
+            // 연속번호출현통계ToolStripMenuItem
+            // 
+            this.연속번호출현통계ToolStripMenuItem.Name = "연속번호출현통계ToolStripMenuItem";
+            this.연속번호출현통계ToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.연속번호출현통계ToolStripMenuItem.Text = "연속번호 출현 통계";
+            this.연속번호출현통계ToolStripMenuItem.Click += new System.EventHandler(this.연속번호출현통계ToolStripMenuItem_Click);
+            // 
             // cbGames
             // 
             this.cbGames.FormattingEnabled = true;
-            this.cbGames.Location = new System.Drawing.Point(961, 249);
+            this.cbGames.Location = new System.Drawing.Point(1051, 212);
             this.cbGames.Name = "cbGames";
             this.cbGames.Size = new System.Drawing.Size(121, 20);
             this.cbGames.TabIndex = 2;
             this.cbGames.SelectedIndexChanged += new System.EventHandler(this.cbGames_SelectedIndexChanged);
             this.cbGames.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbGames_KeyDown);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(878, 288);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(294, 311);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
             // 
             // lbl_LuckNum
             // 
@@ -260,7 +251,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lbl_LuckNum);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.cbGames);
             this.Controls.Add(this.lottoView);
             this.Controls.Add(this.menuStrip1);
@@ -271,7 +261,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.lottoView)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -282,14 +271,12 @@
         private System.Windows.Forms.DataGridView lottoView;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 메인ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 메인홈으로ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 종료ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 통계ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 번호별통계ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 홀짝통계ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 구간별출현횟수통계ToolStripMenuItem;
         private System.Windows.Forms.ComboBox cbGames;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolStripMenuItem 기간별미출현ToolStripMenuItem;
         private System.Windows.Forms.Label lbl_LuckNum;
         private System.Windows.Forms.Label label1;
@@ -300,6 +287,9 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
+
+        private System.Windows.Forms.ToolStripMenuItem 연속번호출현통계ToolStripMenuItem;
+
     }
 }
 

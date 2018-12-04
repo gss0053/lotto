@@ -16,6 +16,7 @@ namespace Lotto
         private int number5;
         private int number6;
         private int bonus;
+        private string date;
 
         public int Turn { get => turn; set => turn = value; }
         public int Number1 { get => number1; set => number1 = value; }
@@ -25,8 +26,9 @@ namespace Lotto
         public int Number5 { get => number5; set => number5 = value; }
         public int Number6 { get => number6; set => number6 = value; }
         public int Bonus { get => bonus; set => bonus = value; }
+        public string Date { get => date; set => date = value; }
 
-        public LottoResult(int turn, int number1, int number2, int number3, int number4, int number5, int number6, int bonus)
+        public LottoResult(int turn, int number1, int number2, int number3, int number4, int number5, int number6, int bonus, string date)
         {
             this.turn = turn;
             this.number1 = number1;
@@ -36,10 +38,7 @@ namespace Lotto
             this.number5 = number5;
             this.number6 = number6;
             this.bonus = bonus;
-        }
-
-        public LottoResult()
-        {
+            this.date = date;
         }
     }
 }

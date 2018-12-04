@@ -55,7 +55,7 @@ namespace Lotto
                 {
                     switch (numberList[i] % 2)
                     {
-                        case 0:
+                        case 0:                            
                             even += numberList[i].ToString() + ", ";
                             row["짝수"] = even.Substring(0, even.Length - 2);
                             break;

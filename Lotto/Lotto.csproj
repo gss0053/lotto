@@ -58,6 +58,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmSector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSector.Designer.cs">
+      <DependentUpon>FrmSector.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmProgressBar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,7 +77,7 @@
     <Compile Include="Frm_ByNumberChart.Designer.cs">
       <DependentUpon>Frm_ByNumberChart.cs</DependentUpon>
     </Compile>
-    
+
     <Compile Include="FrmSnifflingChart.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,10 +99,19 @@
     <EmbeddedResource Include="Frm_ByNumberChart.resx">
       <DependentUpon>Frm_ByNumberChart.cs</DependentUpon>
     </EmbeddedResource>
+
     <EmbeddedResource Include="FrmSnifflingChart.resx">
       <DependentUpon>FrmSnifflingChart.cs</DependentUpon>
-
     </EmbeddedResource>
+
+
+
+
+    <EmbeddedResource Include="FrmSector.resx">
+      <DependentUpon>FrmSector.cs</DependentUpon>
+    </EmbeddedResource>
+
+
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -105,6 +120,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -122,6 +138,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="lottoXml.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\0r3v75UJ_400x400.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

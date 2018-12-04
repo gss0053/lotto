@@ -131,8 +131,8 @@ namespace Lotto
             node = node.SelectSingleNode("div");
             node = node.SelectNodes("div")[1];
 
-            round = int.Parse((node.SelectSingleNode("h4").FirstChild.InnerText).Substring(0, 3));
-
+            round = int.Parse((node.SelectSingleNode("h4").FirstChild.InnerText).Substring(0, (node.SelectSingleNode("h4").FirstChild.InnerText).Length - 1));
+            
             node = node.SelectNodes("div")[0];
             HtmlNodeCollection nodes = node.SelectNodes("div");
 
@@ -201,29 +201,30 @@ namespace Lotto
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //count = Parsing(path) - DBNewestRound();
-            //if (Parsing(path) > DBNewestRound())
-            //{
-            //    fpb = new FrmProgressBar();
-            //    fpb.Show();
-            //    while (Parsing(path) > DBNewestRound())
-            //    {
-            //        no = DBNewestRound() + 1;
-            //        path = path + no;
-            //        Parsing(path);
-            //        Insert();
+            count = Parsing(path) - DBNewestRound();
+            if (Parsing(path) > DBNewestRound())
+            {
+                fpb = new FrmProgressBar();
+                fpb.Show();
+                while (Parsing(path) > DBNewestRound())
+                {
+                    no = DBNewestRound() + 1;
+                    path = path + no;
+                    Parsing(path);
+                    Insert();
 
-            //        path = path.Substring(0, path.Length - no.ToString().Length);
-            //        no++;
-            //    }
-            //    MessageBox.Show("업데이트 완료");
-            //    fpb.Dispose();
-            //    fpb.Close();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("최신 버전입니다");
-            //}
+                    path = path.Substring(0, path.Length - no.ToString().Length);
+                    no++;
+                }
+                MessageBox.Show("업데이트 완료");
+                fpb.Dispose();
+                fpb.Close();
+            }
+            else
+            {
+                MessageBox.Show("최신 버전입니다");
+            }
+
 
             SqlConnection con = new SqlConnection("Data Source=192.168.0.10;Initial Catalog=lotto_DB;User ID=khi;Password=1234");
             con.Open();

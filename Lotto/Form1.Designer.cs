@@ -37,16 +37,21 @@
             this.번호별통계ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.홀짝통계ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.구간별출현횟수통계ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cbGames = new System.Windows.Forms.ComboBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.lottoView)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // lottoView
             // 
             this.lottoView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.lottoView.Location = new System.Drawing.Point(12, 249);
+            this.lottoView.MultiSelect = false;
             this.lottoView.Name = "lottoView";
             this.lottoView.RowTemplate.Height = 23;
+            this.lottoView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.lottoView.Size = new System.Drawing.Size(860, 350);
             this.lottoView.TabIndex = 0;
             // 
@@ -109,21 +114,45 @@
             this.구간별출현횟수통계ToolStripMenuItem.Name = "구간별출현횟수통계ToolStripMenuItem";
             this.구간별출현횟수통계ToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.구간별출현횟수통계ToolStripMenuItem.Text = "구간별 출현횟수 통계";
+            this.구간별출현횟수통계ToolStripMenuItem.Click += new System.EventHandler(this.구간별출현횟수통계ToolStripMenuItem_Click);
+            // 
+            // cbGames
+            // 
+            this.cbGames.FormattingEnabled = true;
+            this.cbGames.Location = new System.Drawing.Point(961, 249);
+            this.cbGames.Name = "cbGames";
+            this.cbGames.Size = new System.Drawing.Size(121, 20);
+            this.cbGames.TabIndex = 2;
+            this.cbGames.SelectedIndexChanged += new System.EventHandler(this.cbGames_SelectedIndexChanged);
+            this.cbGames.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbGames_KeyDown);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Lotto.Properties.Resources._0r3v75UJ_400x400;
+            this.pictureBox1.Location = new System.Drawing.Point(878, 288);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(294, 311);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1184, 611);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.cbGames);
             this.Controls.Add(this.lottoView);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "로또 프로그램";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.lottoView)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -140,6 +169,8 @@
         private System.Windows.Forms.ToolStripMenuItem 번호별통계ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 홀짝통계ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 구간별출현횟수통계ToolStripMenuItem;
+        private System.Windows.Forms.ComboBox cbGames;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

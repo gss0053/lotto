@@ -70,20 +70,23 @@
     <Compile Include="FrmProgressBar.Designer.cs">
       <DependentUpon>FrmProgressBar.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Frm_ByNumberChart.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Frm_ByNumberChart.Designer.cs">
       <DependentUpon>Frm_ByNumberChart.cs</DependentUpon>
     </Compile>
-
     <Compile Include="FrmSnifflingChart.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmSnifflingChart.Designer.cs">
       <DependentUpon>FrmSnifflingChart.cs</DependentUpon>
-
+    </Compile>
+    <Compile Include="Frm_UnseenNumber.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_UnseenNumber.Designer.cs">
+      <DependentUpon>Frm_UnseenNumber.cs</DependentUpon>
     </Compile>
     <Compile Include="LottoResult.cs" />
     <Compile Include="Program.cs" />
@@ -95,23 +98,18 @@
     <EmbeddedResource Include="FrmProgressBar.resx">
       <DependentUpon>FrmProgressBar.cs</DependentUpon>
     </EmbeddedResource>
-
     <EmbeddedResource Include="Frm_ByNumberChart.resx">
       <DependentUpon>Frm_ByNumberChart.cs</DependentUpon>
     </EmbeddedResource>
-
     <EmbeddedResource Include="FrmSnifflingChart.resx">
       <DependentUpon>FrmSnifflingChart.cs</DependentUpon>
     </EmbeddedResource>
-
-
-
-
     <EmbeddedResource Include="FrmSector.resx">
       <DependentUpon>FrmSector.cs</DependentUpon>
     </EmbeddedResource>
-
-
+    <EmbeddedResource Include="Frm_UnseenNumber.resx">
+      <DependentUpon>Frm_UnseenNumber.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

@@ -87,10 +87,12 @@ namespace Lotto
         {
             FrmSector fs = new FrmSector();
             fs.ShowDialog();
+        }
 
-
-
-
+        private void 기간별미출현ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_UnseenNumber fun = new Frm_UnseenNumber(lottoList);
+            fun.Show();
         }
 
         private int DBNewestRound()

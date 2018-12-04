@@ -39,6 +39,7 @@
             this.구간별출현횟수통계ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cbGames = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.기간별미출현ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.lottoView)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -92,7 +93,8 @@
             this.통계ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.번호별통계ToolStripMenuItem,
             this.홀짝통계ToolStripMenuItem,
-            this.구간별출현횟수통계ToolStripMenuItem});
+            this.구간별출현횟수통계ToolStripMenuItem,
+            this.기간별미출현ToolStripMenuItem});
             this.통계ToolStripMenuItem.Name = "통계ToolStripMenuItem";
             this.통계ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
             this.통계ToolStripMenuItem.Text = "통계";
@@ -100,21 +102,21 @@
             // 번호별통계ToolStripMenuItem
             // 
             this.번호별통계ToolStripMenuItem.Name = "번호별통계ToolStripMenuItem";
-            this.번호별통계ToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.번호별통계ToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
             this.번호별통계ToolStripMenuItem.Text = "번호별 통계";
             this.번호별통계ToolStripMenuItem.Click += new System.EventHandler(this.번호별통계ToolStripMenuItem_Click);
             // 
             // 홀짝통계ToolStripMenuItem
             // 
             this.홀짝통계ToolStripMenuItem.Name = "홀짝통계ToolStripMenuItem";
-            this.홀짝통계ToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.홀짝통계ToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
             this.홀짝통계ToolStripMenuItem.Text = "홀짝 통계";
             this.홀짝통계ToolStripMenuItem.Click += new System.EventHandler(this.홀짝통계ToolStripMenuItem_Click);
             // 
             // 구간별출현횟수통계ToolStripMenuItem
             // 
             this.구간별출현횟수통계ToolStripMenuItem.Name = "구간별출현횟수통계ToolStripMenuItem";
-            this.구간별출현횟수통계ToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.구간별출현횟수통계ToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
             this.구간별출현횟수통계ToolStripMenuItem.Text = "구간별 출현횟수 통계";
             this.구간별출현횟수통계ToolStripMenuItem.Click += new System.EventHandler(this.구간별출현횟수통계ToolStripMenuItem_Click);
             // 
@@ -130,13 +132,19 @@
             // 
             // pictureBox1
             // 
-            
             this.pictureBox1.Location = new System.Drawing.Point(878, 288);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(294, 311);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
+            // 
+            // 기간별미출현ToolStripMenuItem
+            // 
+            this.기간별미출현ToolStripMenuItem.Name = "기간별미출현ToolStripMenuItem";
+            this.기간별미출현ToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.기간별미출현ToolStripMenuItem.Text = "기간별 미출현번호 통계";
+            this.기간별미출현ToolStripMenuItem.Click += new System.EventHandler(this.기간별미출현ToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -173,6 +181,7 @@
         private System.Windows.Forms.ToolStripMenuItem 구간별출현횟수통계ToolStripMenuItem;
         private System.Windows.Forms.ComboBox cbGames;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ToolStripMenuItem 기간별미출현ToolStripMenuItem;
     }
 }
 

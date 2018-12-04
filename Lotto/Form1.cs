@@ -17,21 +17,21 @@ namespace Lotto
 {
     public partial class Form1 : Form
     {
-        private int round, number1, number2, number3, number4, number5, number6, bonus, totalWinMoney, winMoney, gameAmount = 0;
+        private int round, number1, number2, number3, number4, number5, number6, bonus = 0;
         private int no = 0;
         private int newestRound = 0;
         int count = 0;
 
         private double completeCnt;
 
-        private string path = @"http://www.nlotto.co.kr/gameResult.do?method=byWin&drwNo=";
+        private string path = @"https://www.dhlottery.co.kr/gameResult.do?method=byWin&drwNo=";
         private string winStandard;
-        private string rank;
 
         List<LottoResult> lottoList;
         List<int> numberList;
+        List<WinTable> winTabList;
         FrmProgressBar fpb;
-
+        HtmlNode node = null;
 
         private void 홀짝통계ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -44,6 +44,7 @@ namespace Lotto
             InitializeComponent();
             lottoList = new List<LottoResult>();
             numberList = new List<int>();
+            winTabList = new List<WinTable>();
         }
 
         private int DBNewestRound()
@@ -69,53 +70,49 @@ namespace Lotto
             HtmlWeb web = new HtmlWeb();
             web.OverrideEncoding = Encoding.Default;
             HtmlAgilityPack.HtmlDocument htmlDoc = web.Load(path);
-            HtmlNode root = htmlDoc.DocumentNode.SelectSingleNode("//body");
-            HtmlNode info = null;
-
-
-            for (int i = 0; i < root.SelectNodes("//div").Count; i++)
+            HtmlNodeCollection root = htmlDoc.DocumentNode.SelectNodes("//body//div");
+            
+            for (int i = 0; i < root.Count; i++)
             {
-                if (root.SelectNodes("//div")[i].GetAttributeValue("class", "") == "lotto_win_number mt12")
+                if (root[i].GetAttributeValue("class", "") == "containerWrap")
                 {
-                    info = root.SelectNodes("//div")[i];
-                    break;
+                    node = root[i];
                 }
             }
 
-            HtmlNode h3 = info.SelectSingleNode("h3");
-            HtmlNode p = info.SelectSingleNode("p");
-            HtmlNodeCollection ball = p.SelectNodes("img");
-            HtmlNode span = null;
+            node = node.SelectSingleNode("section").SelectSingleNode("div");
+            node = node.SelectNodes("div")[1];
+            node = node.SelectSingleNode("div");
+            node = node.SelectNodes("div")[1];
 
-            for (int i = 0; i < p.SelectNodes("span").Count; i++)
+            round = int.Parse((node.SelectSingleNode("h4").FirstChild.InnerText).Substring(0, 3));
+
+            node = node.SelectNodes("div")[0];
+            HtmlNodeCollection nodes = node.SelectNodes("div");
+
+            for (int i = 0; i < nodes.Count; i++)
             {
-                if (p.SelectNodes("span")[i].GetAttributeValue("class", "") == "number_bonus")
+                switch (nodes[i].GetAttributeValue("class", ""))
                 {
-                    span = p.SelectNodes("span")[i];
-                    break;
+                    case "num win":
+                        node = nodes[i].SelectSingleNode("p");
+                        HtmlNodeCollection spans = node.SelectNodes("span");
+                        number1 = int.Parse(spans[0].InnerText);
+                        number2 = int.Parse(spans[1].InnerText);
+                        number3 = int.Parse(spans[2].InnerText);
+                        number4 = int.Parse(spans[3].InnerText);
+                        number5 = int.Parse(spans[4].InnerText);
+                        number6 = int.Parse(spans[5].InnerText);
+                        break;
+                    case "num bonus":
+                        node = nodes[i].SelectSingleNode("p");
+                        HtmlNode span = node.SelectSingleNode("span");
+                        bonus = int.Parse(span.InnerText);
+                        break;
+                    default:
+                        break;
                 }
             }
-
-            HtmlNode section = root.SelectSingleNode("section");
-            HtmlNode article = section.SelectSingleNode("article").SelectSingleNode("article").SelectSingleNode("div");//.ChildNodes[2].ChildNodes[2];
-            HtmlNode tbody = article.SelectSingleNode("table").SelectSingleNode("tbody");
-            HtmlNodeCollection tr = tbody.SelectNodes("tr");
-
-            numberList.Clear();
-            foreach (var numbers in ball)
-            {
-                numberList.Add(int.Parse(numbers.GetAttributeValue("alt", "")));
-            }
-
-            round = int.Parse(h3.SelectSingleNode("strong").InnerText);
-            number1 = numberList[0];
-            number2 = numberList[1];
-            number3 = numberList[2];
-            number4 = numberList[3];
-            number5 = numberList[4];
-            number6 = numberList[5];
-            bonus = int.Parse(span.SelectSingleNode("img").GetAttributeValue("alt", ""));
-            rank = tr[1].SelectSingleNode("td").SelectSingleNode("strong").InnerText;
 
             return round;
         }
@@ -208,8 +205,6 @@ namespace Lotto
             lottoView.Columns[5].HeaderText = "5번 번호";
             lottoView.Columns[6].HeaderText = "6번 번호";
             lottoView.Columns[7].HeaderText = "보너스 번호";
-
-            MessageBox.Show(rank);
         }
     }
 }

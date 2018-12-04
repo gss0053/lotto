@@ -108,9 +108,9 @@ namespace Lotto
 
             ByNumberChart.ChartAreas[0].AxisX.Interval = 1;
 
-            //ByNumberChart.ChartAreas[0].AxisX.Maximum = 45;
-            //ByNumberChart.ChartAreas[0].AxisX.Minimum = 1;
-            ByNumberChart.Series[0].Points[0].AxisLabel = "";
+            ByNumberChart.ChartAreas[0].AxisX.Maximum = 45;
+            ByNumberChart.ChartAreas[0].AxisX.Minimum = 1;
+            //ByNumberChart.Series[0].Points[0].AxisLabel = " ";
         }
 
         private void btn_sub_Click(object sender, EventArgs e)

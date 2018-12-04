@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
@@ -267,6 +268,23 @@ namespace Lotto
             lottoView.Columns[7].HeaderText = "보너스 번호";
 
             Addtocb();
+
+
+            lbl_LuckNum.Text =  lottoList[0].Turn+"회 행운 번호";
+            label1.Text = lottoList[0].Number1 + " ";
+            label2.Text = lottoList[0].Number2 + " ";
+            label3.Text = lottoList[0].Number3 + " ";
+            label4.Text = lottoList[0].Number4 + " ";
+            label5.Text = lottoList[0].Number5 + " ";
+            label6.Text = lottoList[0].Number6 + " ";
+            label7.Text = lottoList[0].Bonus + " ";
+            label1.ForeColor = Color.Red;
+            label2.ForeColor = Color.Orange;
+            label3.ForeColor = Color.Yellow;
+            label4.ForeColor = Color.Green;
+            label5.ForeColor = Color.Blue;
+            label6.ForeColor = Color.DarkBlue;
+            label7.ForeColor = Color.Purple;
         }
         public void Addtocb()
         {

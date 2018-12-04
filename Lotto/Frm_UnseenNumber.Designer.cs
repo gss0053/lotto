@@ -245,7 +245,7 @@
             // 
             this.rdo_recent.AutoSize = true;
             this.rdo_recent.Checked = true;
-            this.rdo_recent.Location = new System.Drawing.Point(41, 12);
+            this.rdo_recent.Location = new System.Drawing.Point(41, 23);
             this.rdo_recent.Name = "rdo_recent";
             this.rdo_recent.Size = new System.Drawing.Size(75, 16);
             this.rdo_recent.TabIndex = 25;
@@ -257,7 +257,7 @@
             // rdo_round
             // 
             this.rdo_round.AutoSize = true;
-            this.rdo_round.Location = new System.Drawing.Point(41, 34);
+            this.rdo_round.Location = new System.Drawing.Point(41, 45);
             this.rdo_round.Name = "rdo_round";
             this.rdo_round.Size = new System.Drawing.Size(87, 16);
             this.rdo_round.TabIndex = 26;

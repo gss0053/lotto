@@ -18,19 +18,12 @@ namespace Lotto
     public partial class Form1 : Form
     {
         private int round, number1, number2, number3, number4, number5, number6, bonus = 0;
-<<<<<<< HEAD
-        private string path = @"https://www.nlotto.co.kr/gameResult.do?method=byWin&drwNo=";
-        //private string path = @"http://www.dhlottery.co.kr/gameResult.do?method=byWin&drwNo=";
-=======
->>>>>>> master
+
         private int no = 0;
         private int newestRound = 0;
         int count = 0;
 
         private double completeCnt;
-<<<<<<< HEAD
-        List<int> numberList;   // 파싱 할때 1 ~ 6 번 구
-=======
 
         private string path = @"https://www.dhlottery.co.kr/gameResult.do?method=byWin&drwNo=";
         private string winStandard;
@@ -38,7 +31,7 @@ namespace Lotto
         List<LottoResult> lottoList;
         List<int> numberList;
         List<WinTable> winTabList;
->>>>>>> master
+
         FrmProgressBar fpb;
         HtmlNode node = null;
 

@@ -72,7 +72,7 @@ namespace Lotto
             ball21to30 = 0;
             ball31to40 = 0;
             ball41to45 = 0;
-            for (int i = form1.lottoList.Count - selnum - 1; i < form1.lottoList.Count; i++)
+            for (int i = 0; i < selnum; i++)
             {
                 switch ((form1.lottoList[i].Number1 - 1) / 10)
                 {
@@ -234,7 +234,7 @@ namespace Lotto
                 ball21to30 = 0;
                 ball31to40 = 0;
                 ball41to45 = 0;
-                for (int i = form1.lottoList.Count - cbSec1.SelectedIndex - 1; i < form1.lottoList.Count - cbSec2.SelectedIndex; i++)
+                for (int i = cbSec2.SelectedIndex; i < cbSec1.SelectedIndex + 1; i++)
                 {
                     switch ((form1.lottoList[i].Number1 - 1) / 10)
                     {
@@ -420,7 +420,7 @@ namespace Lotto
                 int ball36 = 0;
                 int ball41 = 0;
 
-                for (int i = form1.lottoList.Count - cbSec3.SelectedIndex - 1; i < form1.lottoList.Count - cbSec4.SelectedIndex; i++)
+                for (int i = cbSec2.SelectedIndex; i < cbSec1.SelectedIndex + 1; i++)
                 {
                     switch ((form1.lottoList[i].Number1 - 1) / 5)
                     {
@@ -680,7 +680,7 @@ namespace Lotto
                 ball36 = 0;
                 ball41 = 0;
 
-                for (int i = form1.lottoList.Count - selnum - 1; i < form1.lottoList.Count; i++)
+                for (int i = 0; i < selnum; i++)
                 {
                     switch ((form1.lottoList[i].Number1 - 1) / 5)
                     {

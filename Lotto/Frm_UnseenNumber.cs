@@ -28,7 +28,7 @@ namespace Lotto
         public Frm_UnseenNumber(List<LottoResult> lottoList) : this()
         {
             this.lottoResults = lottoList;
-            lottoResults.Reverse();
+         
         }
 
         private void Frm_UnseenNumber_Load(object sender, EventArgs e)
@@ -95,7 +95,7 @@ namespace Lotto
 
         private void Search_Count(int a)
         {
-            for (int i = lottoResults.Count - a; i < lottoResults.Count; i++)
+            for (int i = 0; i < a; i++)
             {
 
                 lottoNumber_count[lottoResults[i].Number1 - 1]++;

@@ -49,6 +49,7 @@
             this.Controls.Add(this.continueNumView);
             this.Name = "FrmContinueNumber";
             this.Text = "FrmContinueNumber";
+            this.Load += new System.EventHandler(this.FrmContinueNumber_Load);
             ((System.ComponentModel.ISupportInitialize)(this.continueNumView)).EndInit();
             this.ResumeLayout(false);
 

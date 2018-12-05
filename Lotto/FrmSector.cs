@@ -420,7 +420,7 @@ namespace Lotto
                 int ball36 = 0;
                 int ball41 = 0;
 
-                for (int i = cbSec2.SelectedIndex; i < cbSec1.SelectedIndex + 1; i++)
+                for (int i = cbSec4.SelectedIndex; i < cbSec3.SelectedIndex + 1; i++)
                 {
                     switch ((form1.lottoList[i].Number1 - 1) / 5)
                     {

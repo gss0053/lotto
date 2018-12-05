@@ -60,7 +60,7 @@
             this.lottoView.Name = "lottoView";
             this.lottoView.RowTemplate.Height = 23;
             this.lottoView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.lottoView.Size = new System.Drawing.Size(1160, 361);
+            this.lottoView.Size = new System.Drawing.Size(981, 361);
             this.lottoView.TabIndex = 0;
             this.lottoView.Click += new System.EventHandler(this.lottoView_Click);
             this.lottoView.KeyUp += new System.Windows.Forms.KeyEventHandler(this.lottoView_KeyUp);
@@ -72,7 +72,7 @@
             this.통계ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1184, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1005, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -87,7 +87,7 @@
             // 종료ToolStripMenuItem
             // 
             this.종료ToolStripMenuItem.Name = "종료ToolStripMenuItem";
-            this.종료ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.종료ToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
             this.종료ToolStripMenuItem.Text = "종료";
             this.종료ToolStripMenuItem.Click += new System.EventHandler(this.종료ToolStripMenuItem_Click);
             // 
@@ -141,7 +141,7 @@
             // cbGames
             // 
             this.cbGames.FormattingEnabled = true;
-            this.cbGames.Location = new System.Drawing.Point(1051, 212);
+            this.cbGames.Location = new System.Drawing.Point(839, 212);
             this.cbGames.Name = "cbGames";
             this.cbGames.Size = new System.Drawing.Size(121, 20);
             this.cbGames.TabIndex = 2;
@@ -181,7 +181,6 @@
             // 
             // label3
             // 
-
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("굴림", 39.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label3.Location = new System.Drawing.Point(349, 141);
@@ -239,13 +238,12 @@
             this.label8.Size = new System.Drawing.Size(56, 53);
             this.label8.TabIndex = 12;
             this.label8.Text = "+";
-
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1184, 611);
+            this.ClientSize = new System.Drawing.Size(1005, 611);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);

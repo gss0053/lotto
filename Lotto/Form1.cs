@@ -254,13 +254,13 @@ namespace Lotto
                     path = path.Substring(0, path.Length - no.ToString().Length);
                     no++;
                 }
-                MessageBox.Show("업데이트 완료");
+                MessageBox.Show("업데이트 완료", "업데이트 메세지", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 fpb.Dispose();
                 fpb.Close();
             }
             else
             {
-                MessageBox.Show("최신 버전입니다");
+                MessageBox.Show("최신 버전입니다","업데이트 메세지",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
 
 
@@ -312,7 +312,7 @@ namespace Lotto
             label6.ForeColor = Color.DarkBlue;
             label7.ForeColor = Color.Purple;
 
-            this.Text = "로또"; 
+            this.Text = "로또 프로그램"; 
 
         }
 

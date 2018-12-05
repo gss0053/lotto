@@ -21,7 +21,15 @@ namespace Lotto
             this.lottoList = lottoList;
             numberList = new List<int>();
         }
-
+        public void Addtocb()
+        {
+            int i = 0;
+            foreach (var item in lottoList)
+            {
+                comboBox1.Items.Add(lottoList.Count - i);
+                i++;
+            }
+        }
         private void FrmContinueNumber_Load(object sender, EventArgs e)
         {
             this.Text = "연속번호 통계";
@@ -32,7 +40,7 @@ namespace Lotto
             continueTab.Columns.Add("당첨번호");
             continueTab.Columns.Add("연속번호");
             continueTab.Columns.Add("연속번호 출현횟수");
-
+            Addtocb();
             foreach (var item in lottoList)
             {
                 int cnt = 0;
@@ -96,6 +104,38 @@ namespace Lotto
             continueNumView.Columns["당첨번호"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             continueNumView.Columns["당첨일자"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             continueNumView.Columns["연속번호 출현횟수"].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedIndex < 7)
+            {
+                continueNumView.FirstDisplayedScrollingRowIndex = 0;
+            }
+            else if (lottoList.Count - comboBox1.SelectedIndex < 7)
+            {
+                continueNumView.FirstDisplayedScrollingRowIndex = comboBox1.SelectedIndex - 7;
+            }
+            else
+            {
+                continueNumView.FirstDisplayedScrollingRowIndex = int.Parse(comboBox1.SelectedIndex.ToString()) - 7;
+            }
+            continueNumView.Rows[comboBox1.SelectedIndex].Selected = true;
+        }
+
+        private void comboBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (int.Parse(comboBox1.Text) < lottoList.Count || int.Parse(comboBox1.Text) == lottoList.Count)
+                {
+                    comboBox1.SelectedIndex = lottoList.Count - int.Parse(comboBox1.Text);
+                }
+                else if (int.Parse(comboBox1.Text) > lottoList.Count)
+                {
+                    comboBox1.SelectedIndex = 0;
+                }
+            }
         }
     }
 }

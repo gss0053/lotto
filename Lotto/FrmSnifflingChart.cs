@@ -19,7 +19,15 @@ namespace Lotto
             InitializeComponent();
             this.lottoList = lottoList;
         }
-
+        public void Addtocb()
+        {
+            int i = 0;
+            foreach (var item in lottoList)
+            {
+                comboBox1.Items.Add(lottoList.Count - i);
+                i++;
+            }
+        }
         private void FrmSnifflingChart_Load(object sender, EventArgs e)
         {
             DataTable snifflingTab = new DataTable();
@@ -31,7 +39,7 @@ namespace Lotto
             snifflingTab.Columns.Add("홀수");
             snifflingTab.Columns.Add("짝수");
             snifflingTab.Columns.Add("번호합");
-            
+            Addtocb();
 
             foreach (var item in lottoList)
             {
@@ -78,5 +86,38 @@ namespace Lotto
             snifflingView.Columns["홀수"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             snifflingView.Columns["번호합"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
         }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedIndex < 7)
+            {
+                snifflingView.FirstDisplayedScrollingRowIndex = 0;
+            }
+            else if (lottoList.Count - comboBox1.SelectedIndex < 7)
+            {
+                snifflingView.FirstDisplayedScrollingRowIndex = comboBox1.SelectedIndex - 7;
+            }
+            else
+            {
+                snifflingView.FirstDisplayedScrollingRowIndex = int.Parse(comboBox1.SelectedIndex.ToString()) - 7;
+            }
+            snifflingView.Rows[comboBox1.SelectedIndex].Selected = true;
+        }
+
+        private void comboBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (int.Parse(comboBox1.Text) < lottoList.Count || int.Parse(comboBox1.Text) == lottoList.Count)
+                {
+                    comboBox1.SelectedIndex = lottoList.Count - int.Parse(comboBox1.Text);
+                }
+                else if (int.Parse(comboBox1.Text) > lottoList.Count)
+                {
+                    comboBox1.SelectedIndex = 0;
+                }
+            }
+        }
     }
-}
+    }
+

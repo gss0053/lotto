@@ -47,7 +47,7 @@ namespace Lotto
 
         private void Frm_ByNumberChart_Load(object sender, EventArgs e)
         {
-            
+            this.Text = "번호별 통계";
             for (int i = lottoResults.Count; i > 0; i--)
             {   // 콤보 박스에 회차수 입력
                 cbo_Start_Number.Items.Add(i);

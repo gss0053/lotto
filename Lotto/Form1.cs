@@ -312,6 +312,8 @@ namespace Lotto
             label6.ForeColor = Color.DarkBlue;
             label7.ForeColor = Color.Purple;
 
+            this.Text = "로또"; 
+
         }
 
         public void Addtocb()

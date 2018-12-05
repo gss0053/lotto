@@ -33,6 +33,7 @@ namespace Lotto
 
         private void Frm_UnseenNumber_Load(object sender, EventArgs e)
         {
+            this.Text = "기간별 미출현번호 통계";
             gb_recent.Visible = true;
             gb_round.Visible = false;
             cbo_recent.DropDownStyle = ComboBoxStyle.DropDownList;

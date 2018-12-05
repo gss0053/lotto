@@ -24,6 +24,7 @@ namespace Lotto
 
         private void FrmContinueNumber_Load(object sender, EventArgs e)
         {
+            this.Text = "연속번호 통계";
             DataTable continueTab = new DataTable();
 
             continueTab.Columns.Add("회차");

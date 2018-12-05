@@ -23,8 +23,8 @@ namespace Lotto
         private void FrmSnifflingChart_Load(object sender, EventArgs e)
         {
             DataTable snifflingTab = new DataTable();
-            
 
+            this.Text = "홀짝 통계";
             snifflingTab.Columns.Add("회차");
             snifflingTab.Columns.Add("당첨일자");
             snifflingTab.Columns.Add("당첨번호");

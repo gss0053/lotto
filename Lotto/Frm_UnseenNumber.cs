@@ -28,7 +28,7 @@ namespace Lotto
         public Frm_UnseenNumber(List<LottoResult> lottoList) : this()
         {
             this.lottoResults = lottoList;
-         
+            this.lottoResults.Reverse();    // 추후 수정 필요
         }
 
         private void Frm_UnseenNumber_Load(object sender, EventArgs e)

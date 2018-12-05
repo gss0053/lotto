@@ -42,7 +42,7 @@ namespace Lotto
         public Frm_ByNumberChart(List<LottoResult> list) : this()
         {
             this.lottoResults =  list;
-            this.lottoResults.Reverse();
+            this.lottoResults.Reverse(); // 추후 수정 필요
         }
 
         private void Frm_ByNumberChart_Load(object sender, EventArgs e)

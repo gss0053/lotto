@@ -54,6 +54,8 @@
             this.lottoView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.lottoView.Size = new System.Drawing.Size(860, 350);
             this.lottoView.TabIndex = 0;
+            this.lottoView.Click += new System.EventHandler(this.lottoView_Click);
+            this.lottoView.KeyUp += new System.Windows.Forms.KeyEventHandler(this.lottoView_KeyUp);
             // 
             // menuStrip1
             // 
@@ -130,7 +132,6 @@
             // 
             // pictureBox1
             // 
-            
             this.pictureBox1.Location = new System.Drawing.Point(878, 288);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(294, 311);

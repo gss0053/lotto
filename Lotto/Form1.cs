@@ -11,13 +11,21 @@ namespace Lotto
 {
     public partial class Form1 : Form
     {
+
         private int round, number1, number2, number3, number4, number5, number6, bonus, no, newestRound = 0;
+
         int count = 0;
-        int i = 0;
         private double completeCnt;
         private string path = @"https://www.dhlottery.co.kr/gameResult.do?method=byWin&drwNo=";
+
         private string date;
-        List<LottoResult> lottoList;
+
+        
+
+        public List<LottoResult> lottoList;
+
+
+
         List<int> numberList;
         FrmProgressBar fpb;
         HtmlNode node = null;
@@ -72,13 +80,6 @@ namespace Lotto
                 }
             }
         }
-
-        private void 구간별출현횟수통계ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FrmSector fs = new FrmSector();
-            fs.ShowDialog();
-        }
-
         private void 종료ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -93,6 +94,37 @@ namespace Lotto
         {
             FrmContinueNumber fcn = new FrmContinueNumber(lottoList);
             fcn.Show();
+        }
+
+        private void 구간별출현횟수통계ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmSector fs = new FrmSector();
+            fs.form1 = this;
+            fs.Show();
+        }
+
+        private void lottoView_Click(object sender, EventArgs e)
+        {
+            cbGames.Text = lottoView.SelectedRows[0].Cells[0].Value.ToString();
+        }
+
+        private void lottoView_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up)
+            {
+                if (int.Parse(cbGames.Text) < newestRound )
+                {
+                    cbGames.Text = (int.Parse(cbGames.Text) + 1).ToString();
+                }
+            }
+            if (e.KeyCode == Keys.Down)
+            {
+                if (int.Parse(cbGames.Text) > 1)
+                {
+                    cbGames.Text = (int.Parse(cbGames.Text) - 1).ToString();
+                }
+            }
+
         }
 
         private int DBNewestRound()
@@ -245,9 +277,11 @@ namespace Lotto
             {
                 lottoList.Add(new LottoResult(int.Parse(sr[0].ToString()), int.Parse(sr[1].ToString()), int.Parse(sr[2].ToString()), int.Parse(sr[3].ToString()), int.Parse(sr[4].ToString()), int.Parse(sr[5].ToString()), int.Parse(sr[6].ToString()), int.Parse(sr[7].ToString()), sr[8].ToString()));
             }
+
             newestRound = lottoList[0].Turn;
             con.Close();
             lottoView.DataSource = lottoList;
+
             lottoView.Columns[0].HeaderText = "회차수";
             lottoView.Columns[1].HeaderText = "1번 번호";
             lottoView.Columns[2].HeaderText = "2번 번호";
@@ -282,6 +316,7 @@ namespace Lotto
 
         public void Addtocb()
         {
+            int i = 0;
             foreach (var item in lottoList)
             {
                 cbGames.Items.Add(newestRound - i);

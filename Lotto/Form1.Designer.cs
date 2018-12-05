@@ -62,6 +62,8 @@
             this.lottoView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.lottoView.Size = new System.Drawing.Size(1160, 361);
             this.lottoView.TabIndex = 0;
+            this.lottoView.Click += new System.EventHandler(this.lottoView_Click);
+            this.lottoView.KeyUp += new System.Windows.Forms.KeyEventHandler(this.lottoView_KeyUp);
             // 
             // menuStrip1
             // 
@@ -179,6 +181,7 @@
             // 
             // label3
             // 
+
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("굴림", 39.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label3.Location = new System.Drawing.Point(349, 141);
@@ -236,6 +239,7 @@
             this.label8.Size = new System.Drawing.Size(56, 53);
             this.label8.TabIndex = 12;
             this.label8.Text = "+";
+
             // 
             // Form1
             // 

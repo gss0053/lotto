@@ -80,7 +80,7 @@ namespace Lotto
 
         private void 연속번호출현통계ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmContinueNumber fcn = new FrmContinueNumber();
+            FrmContinueNumber fcn = new FrmContinueNumber(lottoList);
             fcn.Show();
         }
 
@@ -245,10 +245,10 @@ namespace Lotto
             lottoView.Columns[5].HeaderText = "5번 번호";
             lottoView.Columns[6].HeaderText = "6번 번호";
             lottoView.Columns[7].HeaderText = "보너스 번호";
+            lottoView.Columns[8].HeaderText = "추첨 일자";
+            lottoView.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
             Addtocb();
-
-            MessageBox.Show(date);
         }
 
         public void Addtocb()

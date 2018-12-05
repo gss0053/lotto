@@ -40,7 +40,6 @@ namespace Lotto
                 numberList.Clear();
 
                 DataRow row = snifflingTab.NewRow();
-                row["회차"] = item.Turn;
 
                 numberList.Add(item.Number1);
                 numberList.Add(item.Number2);
@@ -48,8 +47,6 @@ namespace Lotto
                 numberList.Add(item.Number4);
                 numberList.Add(item.Number5);
                 numberList.Add(item.Number6);
-
-                row["당첨번호"] = item.Number1 + ", " + item.Number2 + ", " + item.Number3 + ", " + item.Number4 + ", " + item.Number5 + ", " + item.Number6;
 
                 for (int i = 0; i < numberList.Count; i++)
                 {
@@ -65,13 +62,21 @@ namespace Lotto
                             break;
                     }
                 }
+
+                row["회차"] = item.Turn;
+                row["당첨번호"] = item.Number1 + ", " + item.Number2 + ", " + item.Number3 + ", " + item.Number4 + ", " + item.Number5 + ", " + item.Number6;
+                row["당첨일자"] = item.Date;
+                row["번호합"] = item.Number1 + item.Number2 + item.Number3 + item.Number4 + item.Number5 + item.Number6;
+
                 snifflingTab.Rows.Add(row);
             }
             snifflingView.DataSource = snifflingTab;
 
             snifflingView.Columns["당첨번호"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            snifflingView.Columns["당첨일자"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             snifflingView.Columns["짝수"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             snifflingView.Columns["홀수"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            snifflingView.Columns["번호합"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
         }
     }
 }

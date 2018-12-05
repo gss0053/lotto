@@ -95,7 +95,8 @@ namespace Lotto
 
         private void Search_Count(int a)
         {
-            for (int i = 0; i < a; i++)
+            //for (int i = 0; i < a; i++)
+              for(int i = lottoResults.Count - a; i < lottoResults.Count; i++)
             {
 
                 lottoNumber_count[lottoResults[i].Number1 - 1]++;

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
@@ -10,19 +11,22 @@ namespace Lotto
 {
     public partial class Form1 : Form
     {
-        private int round, number1, number2, number3, number4, number5, number6, bonus = 0;
-        private int no = 0;
-        private int newestRound = 0;
+
+        private int round, number1, number2, number3, number4, number5, number6, bonus, no, newestRound = 0;
+
         int count = 0;
         private double completeCnt;
-
         private string path = @"https://www.dhlottery.co.kr/gameResult.do?method=byWin&drwNo=";
-        //private string winStandard;
+
+        private string date;
+
+        
 
         public List<LottoResult> lottoList;
-        List<int> numberList;
-        List<WinTable> winTabList;
 
+
+
+        List<int> numberList;
         FrmProgressBar fpb;
         HtmlNode node = null;
 
@@ -43,14 +47,10 @@ namespace Lotto
             InitializeComponent();
             lottoList = new List<LottoResult>();
             numberList = new List<int>();
-
-            winTabList = new List<WinTable>();
-
         }
 
         private void cbGames_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             if (cbGames.SelectedIndex < 7)
             {
                 lottoView.FirstDisplayedScrollingRowIndex = 0;
@@ -79,6 +79,21 @@ namespace Lotto
                     cbGames.SelectedIndex = 0;
                 }
             }
+        }
+        private void 종료ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void 기간별미출현ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_UnseenNumber fun = new Frm_UnseenNumber(lottoList);
+            fun.Show();
+        }
+        private void 연속번호출현통계ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmContinueNumber fcn = new FrmContinueNumber(lottoList);
+            fcn.Show();
         }
 
         private void 구간별출현횟수통계ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -109,6 +124,7 @@ namespace Lotto
                     cbGames.Text = (int.Parse(cbGames.Text) - 1).ToString();
                 }
             }
+
         }
 
         private int DBNewestRound()
@@ -129,6 +145,7 @@ namespace Lotto
                 return newestRound;
             }
         }
+
         private int Parsing(string path)
         {
             HtmlWeb web = new HtmlWeb();
@@ -150,7 +167,9 @@ namespace Lotto
             node = node.SelectNodes("div")[1];
 
             round = int.Parse((node.SelectSingleNode("h4").FirstChild.InnerText).Substring(0, (node.SelectSingleNode("h4").FirstChild.InnerText).Length - 1));
-            
+            date = node.SelectSingleNode("p").InnerText;
+            date = date.Substring(0, date.Length - 3).Remove(0, 1);
+
             node = node.SelectNodes("div")[0];
             HtmlNodeCollection nodes = node.SelectNodes("div");
 
@@ -195,6 +214,7 @@ namespace Lotto
                 cmd.Parameters.AddWithValue("number_5", number5);
                 cmd.Parameters.AddWithValue("number_6", number6);
                 cmd.Parameters.AddWithValue("number_7", bonus);
+                cmd.Parameters.AddWithValue("date", date);
 
                 cmd.ExecuteNonQuery();
                 DBConnect.Close(con);
@@ -255,13 +275,11 @@ namespace Lotto
 
             while (sr.Read())
             {
-                lottoList.Add(new LottoResult(int.Parse(sr[0].ToString()), int.Parse(sr[1].ToString()), int.Parse(sr[2].ToString()), int.Parse(sr[3].ToString()), int.Parse(sr[4].ToString()), int.Parse(sr[5].ToString()), int.Parse(sr[6].ToString()), int.Parse(sr[7].ToString())));
+                lottoList.Add(new LottoResult(int.Parse(sr[0].ToString()), int.Parse(sr[1].ToString()), int.Parse(sr[2].ToString()), int.Parse(sr[3].ToString()), int.Parse(sr[4].ToString()), int.Parse(sr[5].ToString()), int.Parse(sr[6].ToString()), int.Parse(sr[7].ToString()), sr[8].ToString()));
             }
 
             newestRound = lottoList[0].Turn;
-
             con.Close();
-
             lottoView.DataSource = lottoList;
 
             lottoView.Columns[0].HeaderText = "회차수";
@@ -272,9 +290,30 @@ namespace Lotto
             lottoView.Columns[5].HeaderText = "5번 번호";
             lottoView.Columns[6].HeaderText = "6번 번호";
             lottoView.Columns[7].HeaderText = "보너스 번호";
+            lottoView.Columns[8].HeaderText = "추첨 일자";
+            lottoView.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
             Addtocb();
+
+
+            lbl_LuckNum.Text =  lottoList[0].Turn+"회 행운 번호";
+            label1.Text = lottoList[0].Number1 + " ";
+            label2.Text = lottoList[0].Number2 + " ";
+            label3.Text = lottoList[0].Number3 + " ";
+            label4.Text = lottoList[0].Number4 + " ";
+            label5.Text = lottoList[0].Number5 + " ";
+            label6.Text = lottoList[0].Number6 + " ";
+            label7.Text = lottoList[0].Bonus + " ";
+            label1.ForeColor = Color.Red;
+            label2.ForeColor = Color.Orange;
+            label3.ForeColor = Color.Yellow;
+            label4.ForeColor = Color.Green;
+            label5.ForeColor = Color.Blue;
+            label6.ForeColor = Color.DarkBlue;
+            label7.ForeColor = Color.Purple;
+
         }
+
         public void Addtocb()
         {
             int i = 0;

@@ -25,9 +25,11 @@ namespace Lotto
         //               0,0,0,0,0, 0,0,0,0,0,
         //               0,0,0,0,0, 0,0,0,0,0,
         //               0,0,0,0,0 };
-
+        
         int[] lottoNumber_count = new int[45];
         List<LottoResult> lottoResults = new List<LottoResult>();
+       
+
         string pattern = "^[0-9]*$";
 
         public Frm_ByNumberChart()
@@ -38,13 +40,15 @@ namespace Lotto
 
         public Frm_ByNumberChart(List<LottoResult> list) : this()
         {
-            this.lottoResults = list;
+            this.lottoResults =  list;
+            this.lottoResults.Reverse();
         }
 
         private void Frm_ByNumberChart_Load(object sender, EventArgs e)
         {
+            
             for (int i = lottoResults.Count; i > 0; i--)
-            {
+            {   // 콤보 박스에 회차수 입력
                 cbo_Start_Number.Items.Add(i);
                 cbo_End_Number.Items.Add(i);
             }
@@ -59,7 +63,7 @@ namespace Lotto
         private void LottoNumber_Count()
         {
             for (int i = 0; i < lottoNumber_count.Length; i++)
-            {
+            {   // 카운트 초기화
                 lottoNumber_count[i] = 0;
             }
 
@@ -80,18 +84,18 @@ namespace Lotto
                 cbo_End_Number.SelectedIndex = 0;
             }
 
-
+            
             for (int i = cbo_End_Number.SelectedIndex; i < cbo_Start_Number.SelectedIndex + 1; i++)
             {   // 1 ~ 45번 카운트
-                lottoNumber_count[lottoResults[i].Number1 - 1]++;
-                lottoNumber_count[lottoResults[i].Number2 - 1]++;
-                lottoNumber_count[lottoResults[i].Number3 - 1]++;
-                lottoNumber_count[lottoResults[i].Number4 - 1]++;
-                lottoNumber_count[lottoResults[i].Number5 - 1]++;
-                lottoNumber_count[lottoResults[i].Number6 - 1]++;
+                lottoNumber_count[lottoResults[i].Number1-1]++;
+                lottoNumber_count[lottoResults[i].Number2-1]++;
+                lottoNumber_count[lottoResults[i].Number3-1]++;
+                lottoNumber_count[lottoResults[i].Number4-1]++;
+                lottoNumber_count[lottoResults[i].Number5-1]++;
+                lottoNumber_count[lottoResults[i].Number6-1]++;
                 if (!chk_Bonus.Checked)
                 {   // 보너스 포함시 7번구도 카운트
-                    lottoNumber_count[lottoResults[i].Bonus - 1]++;
+                    lottoNumber_count[lottoResults[i].Bonus-1]++;
                 }
             }
 
@@ -104,7 +108,7 @@ namespace Lotto
 
             ByNumberChart.ChartAreas[0].AxisX.Maximum = 45;
             ByNumberChart.ChartAreas[0].AxisX.Minimum = 1;
-
+            //ByNumberChart.Series[0].Points[0].AxisLabel = " ";
         }
 
         private void btn_sub_Click(object sender, EventArgs e)
@@ -135,6 +139,7 @@ namespace Lotto
                 btn_sub_Click(null, null);
             }
         }
+
         Point? previousPos = null;
 
         private void ByNumberChart_MouseMove(object sender, MouseEventArgs e)
@@ -154,7 +159,7 @@ namespace Lotto
             {
                 var yValue = (hit.Object as DataPoint).YValues[0];
 
-                myTooltip.Show(hit.PointIndex + "번 " + yValue + "회", ByNumberChart, new Point(position.X + 10, position.Y + 15));
+                myTooltip.Show(hit.PointIndex+1 + "번 " + yValue + "회", ByNumberChart, new Point(position.X + 10, position.Y + 15));
             }
         }
     }

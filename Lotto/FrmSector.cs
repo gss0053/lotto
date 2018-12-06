@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Lotto
 {
     public partial class FrmSector : Form
     {
+        Point? previousPos = null;
         int ball1to10;
         int ball11to20;
         int ball21to30;
@@ -72,7 +74,7 @@ namespace Lotto
             ball21to30 = 0;
             ball31to40 = 0;
             ball41to45 = 0;
-            for (int i = form1.lottoList.Count - selnum - 1; i < form1.lottoList.Count; i++)
+            for (int i = 0; i < selnum; i++)
             {
                 switch ((form1.lottoList[i].Number1 - 1) / 10)
                 {
@@ -234,7 +236,7 @@ namespace Lotto
                 ball21to30 = 0;
                 ball31to40 = 0;
                 ball41to45 = 0;
-                for (int i = form1.lottoList.Count - cbSec1.SelectedIndex - 1; i < form1.lottoList.Count - cbSec2.SelectedIndex; i++)
+                for (int i = cbSec2.SelectedIndex; i < cbSec1.SelectedIndex + 1; i++)
                 {
                     switch ((form1.lottoList[i].Number1 - 1) / 10)
                     {
@@ -397,7 +399,7 @@ namespace Lotto
         private void cbSec1_SelectedIndexChanged(object sender, EventArgs e)
         {
             cbSec2.Items.Clear();
-            btnDeg5Sec.Enabled = false;
+            btnDeg10Sec.Enabled = false;
             cbSec2.Enabled = true;
             int j = 0;
             for (int i = form1.lottoList.Count - cbSec1.SelectedIndex; i < form1.lottoList.Count + 1; i++)
@@ -420,7 +422,7 @@ namespace Lotto
                 int ball36 = 0;
                 int ball41 = 0;
 
-                for (int i = form1.lottoList.Count - cbSec3.SelectedIndex - 1; i < form1.lottoList.Count - cbSec4.SelectedIndex; i++)
+                for (int i = cbSec4.SelectedIndex; i < cbSec3.SelectedIndex + 1; i++)
                 {
                     switch ((form1.lottoList[i].Number1 - 1) / 5)
                     {
@@ -664,7 +666,7 @@ namespace Lotto
 
                 chtDeg5.ChartAreas[0].AxisY.Interval = Math.Ceiling(double.Parse(array[8].ToString()) / 10);
             }
-            chtDeg5.Series[0].Name = cbSec1.Text + "회 부터 " + cbSec2.Text + "회 까지";
+            chtDeg5.Series[0].Name = cbSec3.Text + "회 부터 " + cbSec4.Text + "회 까지";
         }
 
         private void ChartDataSet2(int selnum)
@@ -680,7 +682,7 @@ namespace Lotto
                 ball36 = 0;
                 ball41 = 0;
 
-                for (int i = form1.lottoList.Count - selnum - 1; i < form1.lottoList.Count; i++)
+                for (int i = 0; i < selnum; i++)
                 {
                     switch ((form1.lottoList[i].Number1 - 1) / 5)
                     {
@@ -969,6 +971,84 @@ namespace Lotto
         private void cbSec4_SelectedIndexChanged(object sender, EventArgs e)
         {
             btnDeg5Sec.Enabled = true;
+        }
+
+        private void chtCircle_MouseMove(object sender, MouseEventArgs e)
+        {
+            Point position = e.Location;
+            if (previousPos.HasValue && position == previousPos)
+            {
+                return;
+            }
+            chtTooltip.RemoveAll();
+            previousPos = position;
+
+            var hit = chtCircle.HitTest(position.X, position.Y, ChartElementType.DataPoint);
+            var yTotValue = ball1to10 + ball11to20 + ball21to30 + ball31to40 + ball41to45;
+            if (hit.ChartElementType == ChartElementType.DataPoint)
+            {
+                var yValue = (hit.Object as DataPoint).YValues[0];
+
+                chtTooltip.Show((hit.Object as DataPoint).AxisLabel + "\n총 " + yValue + "회\n" + Math.Round((hit.Object as DataPoint).YValues[0] * 100 / yTotValue, 2) + "%", chtCircle, new Point(position.X + 10, position.Y + 15));
+            }
+        }
+
+        private void chtDeg10_MouseMove(object sender, MouseEventArgs e)
+        {
+            Point position = e.Location;
+            if (previousPos.HasValue && position == previousPos)
+            {
+                return;
+            }
+            chtTooltip.RemoveAll();
+            previousPos = position;
+
+            var hit = chtDeg10.HitTest(position.X, position.Y, ChartElementType.DataPoint);
+            if (hit.ChartElementType == ChartElementType.DataPoint)
+            {
+                var yValue = (hit.Object as DataPoint).YValues[0];
+
+                chtTooltip.Show((hit.Object as DataPoint).AxisLabel + "\n총 " + yValue + "회\n", chtDeg10, new Point(position.X + 10, position.Y + 15));
+            }
+        }
+
+        private void chtCircle2_MouseMove(object sender, MouseEventArgs e)
+        {
+            Point position = e.Location;
+            if (previousPos.HasValue && position == previousPos)
+            {
+                return;
+            }
+            chtTooltip.RemoveAll();
+            previousPos = position;
+
+            var hit = chtCircle2.HitTest(position.X, position.Y, ChartElementType.DataPoint);
+            var yTotValue = ball1 + ball6 + ball11 + ball16 + ball21 + ball26 + ball31 + ball36 + ball41;
+            if (hit.ChartElementType == ChartElementType.DataPoint)
+            {
+                var yValue = (hit.Object as DataPoint).YValues[0];
+
+                chtTooltip.Show((hit.Object as DataPoint).AxisLabel + "\n총 " + yValue + "회\n" + Math.Round((hit.Object as DataPoint).YValues[0] * 100 / yTotValue, 2) + "%", chtCircle2, new Point(position.X + 10, position.Y + 15));
+            }
+        }
+
+        private void chtDeg5_MouseMove(object sender, MouseEventArgs e)
+        {
+            Point position = e.Location;
+            if (previousPos.HasValue && position == previousPos)
+            {
+                return;
+            }
+            chtTooltip.RemoveAll();
+            previousPos = position;
+
+            var hit = chtDeg5.HitTest(position.X, position.Y, ChartElementType.DataPoint);
+            if (hit.ChartElementType == ChartElementType.DataPoint)
+            {
+                var yValue = (hit.Object as DataPoint).YValues[0];
+
+                chtTooltip.Show((hit.Object as DataPoint).AxisLabel + "\n총 " + yValue + "회\n", chtDeg5, new Point(position.X + 10, position.Y + 15));
+            }
         }
     }
 }

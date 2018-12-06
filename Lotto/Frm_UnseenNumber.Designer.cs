@@ -53,6 +53,10 @@
             this.rdo_round = new System.Windows.Forms.RadioButton();
             this.gb_recent = new System.Windows.Forms.GroupBox();
             this.gb_round = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.gb_recent.SuspendLayout();
             this.gb_round.SuspendLayout();
             this.SuspendLayout();
@@ -157,7 +161,7 @@
             this.btn_sub.Name = "btn_sub";
             this.btn_sub.Size = new System.Drawing.Size(75, 23);
             this.btn_sub.TabIndex = 11;
-            this.btn_sub.Text = "검색";
+            this.btn_sub.Text = "조회";
             this.btn_sub.UseVisualStyleBackColor = true;
             this.btn_sub.Click += new System.EventHandler(this.btn_sub_Click);
             // 
@@ -290,11 +294,51 @@
             this.gb_round.TabIndex = 28;
             this.gb_round.TabStop = false;
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(157, 157);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(44, 12);
+            this.label11.TabIndex = 29;
+            this.label11.Text = "label11";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(302, 157);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(44, 12);
+            this.label12.TabIndex = 30;
+            this.label12.Text = "label12";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(260, 157);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(29, 12);
+            this.label13.TabIndex = 31;
+            this.label13.Text = "부터";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(404, 157);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(29, 12);
+            this.label14.TabIndex = 32;
+            this.label14.Text = "까지";
+            // 
             // Frm_UnseenNumber
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 302);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.gb_round);
             this.Controls.Add(this.gb_recent);
             this.Controls.Add(this.rdo_round);
@@ -350,5 +394,9 @@
         private System.Windows.Forms.RadioButton rdo_round;
         private System.Windows.Forms.GroupBox gb_recent;
         private System.Windows.Forms.GroupBox gb_round;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
     }
 }

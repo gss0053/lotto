@@ -52,6 +52,7 @@ namespace Lotto
 
         private void cbGames_SelectedIndexChanged(object sender, EventArgs e)
         {
+           
             if (cbGames.SelectedIndex < 7)
             {
                 lottoView.FirstDisplayedScrollingRowIndex = 0;
@@ -65,6 +66,7 @@ namespace Lotto
                 lottoView.FirstDisplayedScrollingRowIndex = int.Parse(cbGames.SelectedIndex.ToString()) - 7;
             }
             lottoView.Rows[cbGames.SelectedIndex].Selected = true;
+            Display_Num();
         }
 
         private void cbGames_KeyDown(object sender, KeyEventArgs e)
@@ -107,6 +109,21 @@ namespace Lotto
         private void lottoView_Click(object sender, EventArgs e)
         {
             cbGames.Text = lottoView.SelectedRows[0].Cells[0].Value.ToString();
+
+            Display_Num();
+
+        }
+
+        private void Display_Num()
+        {
+            lbl_Num.Text = lottoView.SelectedRows[0].Cells[0].Value + "회 당첨 번호";
+            label1.Text = lottoView.SelectedRows[0].Cells[1].Value.ToString();
+            label2.Text = lottoView.SelectedRows[0].Cells[2].Value.ToString();
+            label3.Text = lottoView.SelectedRows[0].Cells[3].Value.ToString();
+            label4.Text = lottoView.SelectedRows[0].Cells[4].Value.ToString();
+            label5.Text = lottoView.SelectedRows[0].Cells[5].Value.ToString();
+            label6.Text = lottoView.SelectedRows[0].Cells[6].Value.ToString();
+            label7.Text = lottoView.SelectedRows[0].Cells[7].Value.ToString();
         }
 
         private void lottoView_KeyUp(object sender, KeyEventArgs e)
@@ -297,14 +314,8 @@ namespace Lotto
             Addtocb();
 
 
-            lbl_LuckNum.Text =  lottoList[0].Turn+"회 행운 번호";
-            label1.Text = lottoList[0].Number1 + " ";
-            label2.Text = lottoList[0].Number2 + " ";
-            label3.Text = lottoList[0].Number3 + " ";
-            label4.Text = lottoList[0].Number4 + " ";
-            label5.Text = lottoList[0].Number5 + " ";
-            label6.Text = lottoList[0].Number6 + " ";
-            label7.Text = lottoList[0].Bonus + " ";
+            Display_Num();
+            this.Text = "로또 프로그램";
             label1.ForeColor = Color.Red;
             label2.ForeColor = Color.Orange;
             label3.ForeColor = Color.Yellow;
@@ -312,9 +323,6 @@ namespace Lotto
             label5.ForeColor = Color.Blue;
             label6.ForeColor = Color.DarkBlue;
             label7.ForeColor = Color.Purple;
-
-            this.Text = "로또 프로그램"; 
-
         }
 
         public void Addtocb()

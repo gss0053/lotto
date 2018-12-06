@@ -88,13 +88,13 @@ namespace Lotto
 
                 if (conNum.Length != 0)
                 {
-                    conNum = conNum.Substring(0, conNum.Length - 2); 
+                    conNum = conNum.Substring(0, conNum.Length - 2);
                 }
 
                 row["회차"] = item.Turn;
                 row["연속번호"] = conNum;
                 row["당첨일자"] = item.Date;
-                row["당첨번호"] = item.Number1 + ", " + item.Number2 + ", " + item.Number3 + ", " + item.Number4 + ", " + item.Number5 + ", " + item.Number6 + ", ";
+                row["당첨번호"] = item.Number1 + ", " + item.Number2 + ", " + item.Number3 + ", " + item.Number4 + ", " + item.Number5 + ", " + item.Number6;
                 row["연속번호 출현횟수"] = cnt + "쌍";
 
                 continueTab.Rows.Add(row);

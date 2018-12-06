@@ -23,5 +23,15 @@ namespace Lotto
             get { return progressBar; }
             set { progressBar = value; }
         }
+
+        public Label LblUpdate
+        {
+            get { return lblUpdate; }
+            set { lblUpdate = value; }
+        }
+
+        private void FrmProgressBar_Load(object sender, EventArgs e)
+        {
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using HtmlAgilityPack;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -14,10 +15,10 @@ namespace Lotto
 
         private int round, number1, number2, number3, number4, number5, number6, bonus, no, newestRound = 0;
 
-        int count = 0;
-        private double completeCnt;
+        private int count = 0;
+        private double completeCnt = 0;
         private string path = @"https://www.dhlottery.co.kr/gameResult.do?method=byWin&drwNo=";
-
+        private int scrollOffset = int.Parse(ConfigurationManager.AppSettings.GetValues("scrollOffset")[0]);
         private string date;
 
         
@@ -202,7 +203,7 @@ namespace Lotto
         private void Insert()
         {
             using (SqlConnection con = DBConnect.Connect())
-            {
+            {              
                 SqlCommand cmd = OpenMethod(con, "Insert");
                 cmd.StatementCompleted += Cmd_StatementCompleted;
 
@@ -225,6 +226,7 @@ namespace Lotto
         {
             completeCnt += (double)e.RecordCount;
             fpb.ProgressBar.Value = (int)Math.Truncate(completeCnt / count * 100);
+            // fpb.LblUpdate.Text = completeCnt + "/" + count; // 나중에 비동기 어씽크 기법으로 처리하기
         }
 
         private static SqlCommand OpenMethod(SqlConnection con, string cmdText)
@@ -250,7 +252,6 @@ namespace Lotto
                     path = path + no;
                     Parsing(path);
                     Insert();
-
                     path = path.Substring(0, path.Length - no.ToString().Length);
                     no++;
                 }

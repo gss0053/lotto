@@ -26,7 +26,7 @@ namespace Lotto
         //               0,0,0,0,0, 0,0,0,0,0,
         //               0,0,0,0,0 };
 
-        int[] lottoNumber_count = new int[46];
+        int[] lottoNumber_count = new int[45];
         
         List<LottoResult> lottoResults = new List<LottoResult>();
        
@@ -42,11 +42,12 @@ namespace Lotto
         public Frm_ByNumberChart(List<LottoResult> list) : this()
         {
             this.lottoResults =  list;
-            this.lottoResults.Reverse(); // 추후 수정 필요
+            //this.lottoResults.Reverse(); // 추후 수정 필요
         }
 
         private void Frm_ByNumberChart_Load(object sender, EventArgs e)
         {
+            
             this.Text = "번호별 통계";
             for (int i = lottoResults.Count; i > 0; i--)
             {   // 콤보 박스에 회차수 입력
@@ -54,8 +55,10 @@ namespace Lotto
                 cbo_End_Number.Items.Add(i);
             }
 
-            cbo_Start_Number.Text = 1.ToString();
-            cbo_End_Number.Text = lottoResults.Count.ToString();
+            cbo_Start_Number.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbo_End_Number.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbo_Start_Number.SelectedIndex = lottoResults.Count-1;
+            cbo_End_Number.SelectedIndex = 0;
 
             LottoNumber_Count();
 
@@ -81,12 +84,12 @@ namespace Lotto
             if (Int32.Parse(cbo_Start_Number.Text) > Int32.Parse(cbo_End_Number.Text))
             {
                 MessageBox.Show("앞자리 숫자가 뒷자리 숫자보다 클 수 없습니다.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                cbo_Start_Number.Text = 1.ToString();
-                cbo_End_Number.Text = lottoResults.Count.ToString();
+                cbo_Start_Number.SelectedIndex = lottoResults.Count-1;
+                cbo_End_Number.SelectedIndex = 0;
             }
 
 
-            for (int i = Int32.Parse(cbo_Start_Number.Text) - 1; i < Int32.Parse(cbo_End_Number.Text); i++)        
+            for (int i = cbo_End_Number.SelectedIndex; i < cbo_Start_Number.SelectedIndex+1; i++)        
             {   // 1 ~ 45번 카운트
                 lottoNumber_count[lottoResults[i].Number1-1]++;
                 lottoNumber_count[lottoResults[i].Number2-1]++;
@@ -98,9 +101,10 @@ namespace Lotto
                 {   // 보너스 포함시 7번구도 카운트
                     lottoNumber_count[lottoResults[i].Bonus-1]++;
                 }
-
             }
 
+            label5.Text = lottoResults[cbo_End_Number.SelectedIndex].Date;
+            label6.Text = lottoResults[cbo_Start_Number.SelectedIndex].Date;
 
             ByNumberChart.Series[0].Name = "당첨 횟수";
 
@@ -124,7 +128,7 @@ namespace Lotto
             {
                 if (!Regex.IsMatch(cbo_Start_Number.Text, pattern) || Int32.Parse(cbo_Start_Number.Text) > lottoResults.Count)
                 {
-                    cbo_Start_Number.Text = lottoResults.Count.ToString();
+                    cbo_Start_Number.SelectedIndex = lottoResults.Count-1;
                 }
                 cbo_End_Number.Focus();
             }
@@ -136,7 +140,7 @@ namespace Lotto
             {
                 if (!Regex.IsMatch(cbo_End_Number.Text, pattern) || Int32.Parse(cbo_End_Number.Text) > lottoResults.Count)
                 {
-                    cbo_End_Number.Text = lottoResults.Count.ToString();
+                    cbo_End_Number.SelectedIndex = 0;
                 }
                 btn_sub_Click(null, null);
             }
@@ -152,7 +156,10 @@ namespace Lotto
             {
                 return;
             }
+
+
             myTooltip.RemoveAll();
+
             previousPos = position;
 
             var hit = ByNumberChart.HitTest(position.X, position.Y, ChartElementType.DataPoint);

@@ -39,7 +39,7 @@
             this.기간별미출현ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.연속번호출현통계ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cbGames = new System.Windows.Forms.ComboBox();
-            this.lbl_LuckNum = new System.Windows.Forms.Label();
+            this.lbl_Num = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -148,15 +148,15 @@
             this.cbGames.SelectedIndexChanged += new System.EventHandler(this.cbGames_SelectedIndexChanged);
             this.cbGames.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbGames_KeyDown);
             // 
-            // lbl_LuckNum
+            // lbl_Num
             // 
-            this.lbl_LuckNum.AutoSize = true;
-            this.lbl_LuckNum.Font = new System.Drawing.Font("굴림", 39.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbl_LuckNum.Location = new System.Drawing.Point(263, 51);
-            this.lbl_LuckNum.Name = "lbl_LuckNum";
-            this.lbl_LuckNum.Size = new System.Drawing.Size(169, 53);
-            this.lbl_LuckNum.TabIndex = 4;
-            this.lbl_LuckNum.Text = "label1";
+            this.lbl_Num.AutoSize = true;
+            this.lbl_Num.Font = new System.Drawing.Font("굴림", 39.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lbl_Num.Location = new System.Drawing.Point(263, 51);
+            this.lbl_Num.Name = "lbl_Num";
+            this.lbl_Num.Size = new System.Drawing.Size(169, 53);
+            this.lbl_Num.TabIndex = 4;
+            this.lbl_Num.Text = "label1";
             // 
             // label1
             // 
@@ -252,7 +252,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.lbl_LuckNum);
+            this.Controls.Add(this.lbl_Num);
             this.Controls.Add(this.cbGames);
             this.Controls.Add(this.lottoView);
             this.Controls.Add(this.menuStrip1);
@@ -280,7 +280,7 @@
         private System.Windows.Forms.ToolStripMenuItem 구간별출현횟수통계ToolStripMenuItem;
         private System.Windows.Forms.ComboBox cbGames;
         private System.Windows.Forms.ToolStripMenuItem 기간별미출현ToolStripMenuItem;
-        private System.Windows.Forms.Label lbl_LuckNum;
+        private System.Windows.Forms.Label lbl_Num;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;

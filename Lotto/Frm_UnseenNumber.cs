@@ -28,7 +28,7 @@ namespace Lotto
         public Frm_UnseenNumber(List<LottoResult> lottoList) : this()
         {
             this.lottoResults = lottoList;
-            this.lottoResults.Reverse();    // 추후 수정 필요
+           // this.lottoResults.Reverse();    // 추후 수정 필요
         }
 
         private void Frm_UnseenNumber_Load(object sender, EventArgs e)
@@ -37,7 +37,8 @@ namespace Lotto
             gb_recent.Visible = true;
             gb_round.Visible = false;
             cbo_recent.DropDownStyle = ComboBoxStyle.DropDownList;
-
+            cbo_Start_Number.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbo_End_Number.DropDownStyle = ComboBoxStyle.DropDownList;
 
             for (int i = lottoResults.Count; i > 0; i--)
             {   // 콤보 박스에 회차수 입력
@@ -52,7 +53,8 @@ namespace Lotto
             cbo_End_Number.Text = lottoResults.Count.ToString();
             cbo_recent.Text = cbo_recent.Items[0].ToString();
 
-
+            label11.Text = String.Empty;
+            label12.Text = String.Empty;
 
             if (rdo_recent.Checked)
             {
@@ -91,13 +93,14 @@ namespace Lotto
                 Search_Count(search_num);
                 Section_UnseenNumber();
             }
-
+            label12.Text = lottoResults[0].Date;
+            label11.Text = lottoResults[search_num+1].Date;
         }
 
         private void Search_Count(int a)
         {
-            //for (int i = 0; i < a; i++)
-              for(int i = lottoResults.Count - a; i < lottoResults.Count; i++)
+            for (int i = 0; i < a; i++)
+              //for(int i = lottoResults.Count - a; i < lottoResults.Count; i++)
             {
 
                 lottoNumber_count[lottoResults[i].Number1 - 1]++;
@@ -133,11 +136,12 @@ namespace Lotto
             if (Int32.Parse(cbo_Start_Number.Text) > Int32.Parse(cbo_End_Number.Text))
             {
                 MessageBox.Show("앞자리 숫자가 뒷자리 숫자보다 클 수 없습니다.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                cbo_Start_Number.Text = 1.ToString();
-                cbo_End_Number.Text = lottoResults.Count.ToString();
+                cbo_Start_Number.SelectedIndex = lottoResults.Count - 1;
+                cbo_End_Number.SelectedIndex = 0;
             }
 
-            for (int i = Int32.Parse(cbo_Start_Number.Text) - 1; i < Int32.Parse(cbo_End_Number.Text); i++)
+
+            for (int i = cbo_End_Number.SelectedIndex; i < cbo_Start_Number.SelectedIndex + 1; i++)
             {   // 1 ~ 45번 카운트
 
                 lottoNumber_count[lottoResults[i].Number1 - 1]++;
@@ -154,6 +158,8 @@ namespace Lotto
             }
 
             Section_UnseenNumber();
+            label11.Text = lottoResults[cbo_End_Number.SelectedIndex].Date;
+            label12.Text = lottoResults[cbo_Start_Number.SelectedIndex].Date;
         }
 
         private void Section_UnseenNumber()

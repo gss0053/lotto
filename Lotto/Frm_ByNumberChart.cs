@@ -25,9 +25,8 @@ namespace Lotto
         //               0,0,0,0,0, 0,0,0,0,0,
         //               0,0,0,0,0, 0,0,0,0,0,
         //               0,0,0,0,0 };
-
-        int[] lottoNumber_count = new int[45];
         
+        int[] lottoNumber_count = new int[45];
         List<LottoResult> lottoResults = new List<LottoResult>();
        
 
@@ -55,9 +54,11 @@ namespace Lotto
                 cbo_End_Number.Items.Add(i);
             }
 
+
             cbo_Start_Number.DropDownStyle = ComboBoxStyle.DropDownList;
             cbo_End_Number.DropDownStyle = ComboBoxStyle.DropDownList;
             cbo_Start_Number.SelectedIndex = lottoResults.Count-1;
+
             cbo_End_Number.SelectedIndex = 0;
 
             LottoNumber_Count();
@@ -72,24 +73,26 @@ namespace Lotto
             }
 
             if (!Regex.IsMatch(cbo_Start_Number.Text, pattern) || Int32.Parse(cbo_Start_Number.Text) > lottoResults.Count)
-            {  
-                cbo_Start_Number.Text = lottoResults.Count.ToString();
+            {
+                cbo_End_Number.SelectedIndex = 0;
             }
             if (!Regex.IsMatch(cbo_End_Number.Text, pattern) || Int32.Parse(cbo_End_Number.Text) > lottoResults.Count)
             {
-                cbo_End_Number.Text = lottoResults.Count.ToString();
-            }
-
-
-            if (Int32.Parse(cbo_Start_Number.Text) > Int32.Parse(cbo_End_Number.Text))
-            {
-                MessageBox.Show("앞자리 숫자가 뒷자리 숫자보다 클 수 없습니다.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                cbo_Start_Number.SelectedIndex = lottoResults.Count-1;
                 cbo_End_Number.SelectedIndex = 0;
             }
 
 
-            for (int i = cbo_End_Number.SelectedIndex; i < cbo_Start_Number.SelectedIndex+1; i++)        
+            if (cbo_Start_Number.SelectedIndex < cbo_End_Number.SelectedIndex)
+            {
+                MessageBox.Show("앞자리 숫자가 뒷자리 숫자보다 클 수 없습니다.", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                cbo_Start_Number.SelectedIndex = lottoResults.Count - 1;
+                cbo_End_Number.SelectedIndex = 0;
+            }
+
+            
+            for (int i = cbo_End_Number.SelectedIndex; i < cbo_Start_Number.SelectedIndex + 1; i++)
+
             {   // 1 ~ 45번 카운트
                 lottoNumber_count[lottoResults[i].Number1-1]++;
                 lottoNumber_count[lottoResults[i].Number2-1]++;
@@ -122,7 +125,7 @@ namespace Lotto
             LottoNumber_Count();
         }
 
-        private void cbo_Start_Number_KeyUp(object sender, KeyEventArgs e)
+        private void cbo_Start_Number_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -134,7 +137,7 @@ namespace Lotto
             }
         }
 
-        private void cbo_End_Number_KeyUp(object sender, KeyEventArgs e)
+        private void cbo_End_Number_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {

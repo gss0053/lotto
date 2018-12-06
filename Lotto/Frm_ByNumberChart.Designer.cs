@@ -29,9 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+
             this.ByNumberChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.cbo_Start_Number = new System.Windows.Forms.ComboBox();
             this.cbo_End_Number = new System.Windows.Forms.ComboBox();
@@ -51,6 +56,7 @@
             // 
             // ByNumberChart
             // 
+
             chartArea5.Name = "ChartArea1";
             this.ByNumberChart.ChartAreas.Add(chartArea5);
             legend5.Name = "Legend1";
@@ -64,6 +70,7 @@
             series5.MarkerSize = 1;
             series5.Name = "Series1";
             this.ByNumberChart.Series.Add(series5);
+
             this.ByNumberChart.Size = new System.Drawing.Size(763, 571);
             this.ByNumberChart.TabIndex = 0;
             this.ByNumberChart.Text = "chart1";
@@ -76,7 +83,9 @@
             this.cbo_Start_Number.Name = "cbo_Start_Number";
             this.cbo_Start_Number.Size = new System.Drawing.Size(121, 20);
             this.cbo_Start_Number.TabIndex = 1;
-            this.cbo_Start_Number.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbo_Start_Number_KeyUp);
+
+            //this.cbo_Start_Number.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbo_Start_Number_KeyUp);
+
             // 
             // cbo_End_Number
             // 
@@ -85,7 +94,9 @@
             this.cbo_End_Number.Name = "cbo_End_Number";
             this.cbo_End_Number.Size = new System.Drawing.Size(121, 20);
             this.cbo_End_Number.TabIndex = 2;
-            this.cbo_End_Number.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbo_End_Number_KeyUp);
+
+            //this.cbo_End_Number.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbo_End_Number_KeyUp);
+
             // 
             // btn_sub
             // 
